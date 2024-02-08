@@ -7,6 +7,8 @@ sudo -v
 sudo apt update
 sudo apt install -y ntp zip jq
 
+echo "Удаляем предыдущии версии"
+remove -f -r /tmp
 # Запрос BOT_TOKEN
 read -p "Введите BOT_TOKEN: " BOT_TOKEN
 read -p "Введите страну нахождения сервера: " Country
