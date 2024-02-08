@@ -4,6 +4,7 @@
 sudo -v
 
 # Устанавливаем необходимые пакеты
+apt update && apt install sudo
 sudo apt update
 sudo apt install -y ntp zip jq
 
