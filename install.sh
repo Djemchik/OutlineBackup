@@ -9,7 +9,8 @@ sudo apt update
 sudo apt install -y ntp zip jq curl
 
 echo "Удаляем предыдущии версии"
-rm -f -r /tmp
+rm -f -r /tmp/backup.sh
+rm -f -r /tmp/backup_modified.sh
 # Запрос BOT_TOKEN
 read -p "Введите BOT_TOKEN: " BOT_TOKEN
 read -p "Введите страну нахождения сервера: " Country
