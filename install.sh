@@ -6,7 +6,7 @@ sudo -v
 # Устанавливаем необходимые пакеты
 apt update && apt install sudo
 sudo apt update
-sudo apt install -y ntp zip jq curl
+sudo apt install -y ntp zip jq curl git
 
 echo "Удаляем предыдущии версии"
 rm -f -r /tmp/backup.sh
