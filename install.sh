@@ -46,7 +46,7 @@ else
 fi
 
 # Скачиваем скрипт backup.sh
-wget -O /tmp/backup.sh https://github.com/Djemchik/Trash/raw/main/backup.sh
+wget -O /tmp/backup.sh https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
 
 
 
