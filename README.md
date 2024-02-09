@@ -16,5 +16,6 @@ Ubuntu 22.04 +
         apt install curl && curl https://raw.githubusercontent.com/Djemchik/OutlineBackup/main/install.sh > install.sh && sh install.sh
     
 Для проверки используйте команду
+    
     systemctl start backup_script.service
 
