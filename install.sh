@@ -15,6 +15,7 @@ rm -f -r /tmp/backup_modified.sh
 read -p "Введите BOT_TOKEN: " BOT_TOKEN
 read -p "Введите страну нахождения сервера: " Country
 
+echo "Запрос списка чатов бип-бип"
 # Запрашиваем список чатов
 response=$(curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates")
 
@@ -49,11 +50,12 @@ else
     CHAT_ID="$selected_chat_id"
 fi
 
+echo "Скачиваем сам скрипт"
 # Скачиваем скрипт backup.sh
 wget -O /tmp/backup.sh https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
 
 
-
+echo "Устанавливаем московскую временную зону (+3)"
 # Устанавливаем Московскую временную зону
 sudo timedatectl set-timezone Europe/Moscow
 
@@ -76,7 +78,7 @@ validate_time() {
 
 chmod +x /tmp/backup_modified.sh
 
-
+echo "Введите время, при котором скрипт будет запускаться каждый день"
 # Запрос времени для запуска скрипта
 read -p "Введите часы (от 00 до 23): " CRON_HOUR
 validate_time "$CRON_HOUR" 23 "Часы"
@@ -85,6 +87,7 @@ validate_time "$CRON_HOUR" 23 "Часы"
 read -p "Введите минуты (от 00 до 59): " CRON_MINUTE
 validate_time "$CRON_MINUTE" 59 "Минуты"
 
+echo "Создаём службы в systemd"
 # Создание службы systemd
 sudo tee /etc/systemd/system/backup_script.service > /dev/null <<EOF
 [Unit]
