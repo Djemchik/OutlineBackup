@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Путь к файлу backup.sh
-BACKUP_SCRIPT_PATH="/opt/backup.sh"
+BACKUP_SCRIPT_PATH="/opt/backup_modified.sh"
 
 # Проверяем, существует ли файл backup.sh
 if [ -f "$BACKUP_SCRIPT_PATH" ]; then
