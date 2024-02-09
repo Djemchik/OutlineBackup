@@ -10,7 +10,7 @@ sudo apt install -y ntp zip jq curl git
 
 echo "Удаляем предыдущии версии"
 rm -f -r /tmp/backup.sh
-rm -f -r /tmp/backup_modified.sh
+rm -f -r /opt/backup_modified.sh
 # Запрос BOT_TOKEN
 read -p "Введите BOT_TOKEN: " BOT_TOKEN
 read -p "Введите страну нахождения сервера: " Country
@@ -59,13 +59,13 @@ echo "Устанавливаем московскую временную зон�
 # Устанавливаем Московскую временную зону
 sudo timedatectl set-timezone Europe/Moscow
 
-# Копируем скрипт в каталог /tmp
-cp /tmp/backup.sh /tmp/backup_modified.sh
+# Копируем скрипт в каталог /opt
+cp /tmp/backup.sh /opt/backup_modified.sh
 
 # Редактирование скрипта backup.sh
-sed -i "s/CHAT_ID=\"[^\"]*\"/CHAT_ID=\"$CHAT_ID\"/" /tmp/backup_modified.sh
-sed -i "s/BOT_TOKEN=\"[^\"]*\"/BOT_TOKEN=\"$BOT_TOKEN\"/" /tmp/backup_modified.sh
-sed -i "s/Country=\"[^\"]*\"/Country=\"$Country\"/" /tmp/backup_modified.sh
+sed -i "s/CHAT_ID=\"[^\"]*\"/CHAT_ID=\"$CHAT_ID\"/" /opt/backup_modified.sh
+sed -i "s/BOT_TOKEN=\"[^\"]*\"/BOT_TOKEN=\"$BOT_TOKEN\"/" /opt/backup_modified.sh
+sed -i "s/Country=\"[^\"]*\"/Country=\"$Country\"/" /opt/backup_modified.sh
 
 # Проверка формата времени
 validate_time() {
@@ -76,7 +76,7 @@ validate_time() {
     fi
 }
 
-chmod +x /tmp/backup_modified.sh
+chmod +x /opt/backup_modified.sh
 
 echo "Введите время, при котором скрипт будет запускаться каждый день"
 # Запрос времени для запуска скрипта
@@ -95,7 +95,7 @@ Description=Backup Script
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /tmp/backup_modified.sh
+ExecStart=/bin/bash /opt/backup_modified.sh
 StandardOutput=journal
 StandardError=journal
 
