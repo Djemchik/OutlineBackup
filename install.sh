@@ -59,7 +59,7 @@ rm -rf /opt/backup_modified.sh
 # Попытка загрузить файл через curl с таймаутом 20 секунд
 echo "Попытка загрузки файла через curl..."
 # Скачиваем скрипт backup.sh
-wget -O /tmp/backup.sh https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
+wget -O /tmp/backup.sh https://raw.githubusercontent.com/Djemchik/OutlineBackup/main/backup.sh
 
 
 # Проверяем успешность загрузки
