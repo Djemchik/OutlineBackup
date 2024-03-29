@@ -52,7 +52,23 @@ fi
 
 echo "Скачиваем сам скрипт"
 # Скачиваем скрипт backup.sh
-wget -O /tmp/backup.sh https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
+# Удаляем предыдущие версии
+rm -rf /tmp/backup.sh
+rm -rf /opt/backup_modified.sh
+
+# Попытка загрузить файл через wget с таймаутом 20 секунд
+echo "Попытка загрузки файла через wget..."
+wget -O /tmp/backup.sh --timeout=20 https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
+
+# Проверяем успешность загрузки
+if [ $? -ne 0 ]; then
+    echo "Загрузка через wget не удалась. Попытка загрузить через Git..."
+    # Клонируем репозиторий с помощью Git
+    git clone https://github.com/Djemchik/OutlineBackup.git /tmp/OutlineBackup
+
+    # Копируем только backup.sh в нужную директорию
+    cp /tmp/OutlineBackup/backup.sh /tmp/backup.sh
+fi
 
 
 echo "Устанавливаем московскую временную зону (+3)"
