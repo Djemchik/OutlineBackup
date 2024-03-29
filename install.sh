@@ -56,13 +56,13 @@ echo "Скачиваем сам скрипт"
 rm -rf /tmp/backup.sh
 rm -rf /opt/backup_modified.sh
 
-# Попытка загрузить файл через wget с таймаутом 20 секунд
-echo "Попытка загрузки файла через wget..."
-wget -O /tmp/backup.sh --timeout=20 https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
+# Попытка загрузить файл через curl с таймаутом 20 секунд
+echo "Попытка загрузки файла через curl..."
+curl -O /tmp/backup.sh --timeout=20 https://github.com/Djemchik/OutlineBackup/raw/main/backup.sh
 
 # Проверяем успешность загрузки
 if [ $? -ne 0 ]; then
-    echo "Загрузка через wget не удалась. Попытка загрузить через Git..."
+    echo "Загрузка через curl не удалась. Попытка загрузить через Git..."
     # Клонируем репозиторий с помощью Git
     git clone https://github.com/Djemchik/OutlineBackup.git /tmp/OutlineBackup
 
